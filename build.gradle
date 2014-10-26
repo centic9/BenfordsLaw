@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+mainClassName = "org.dstadler.benford.BenfordsLawFileSystem"
+
+sourceCompatibility = 1.7
+version = '1.0'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Show Benford\'s Law by looking at file sizes in the local root directory', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile 'commons-io:commons-io:2.4'
+	compile 'org.apache.commons:commons-lang3:3.3.2'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.1'
+}
