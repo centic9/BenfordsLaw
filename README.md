@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/centic9/BenfordsLaw.svg)](https://travis-ci.org/centic9/BenfordsLaw) [![Gradle Status](https://gradleupdate.appspot.com/centic9/BenfordsLaw/status.svg?branch=master)](https://gradleupdate.appspot.com/centic9/BenfordsLaw/status)
+
 BenfordsLaw
 ===========
 
