@@ -1,30 +1,16 @@
-/***************************************************
- * dynaTrace Diagnostics (c) dynaTrace software GmbH
- *
- * @file: BenfordsLawFileSystem.java
- * @date: 06.08.2011
- * @author: dominik.stadler
- */
 package org.dstadler.benford;
+
+import org.apache.commons.lang3.SystemUtils;
 
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.commons.lang3.SystemUtils;
-
-
 /**
- *
- * @author dominik.stadler
+ * Small application which demonstrates Benford's law
+ * by looking at file sizes in a given directory (or
+ * in the whole filesystem if none is given)
  */
 public class BenfordsLawFileSystem {
-
-	/**
-	 *
-	 * @param args
-	 * @author dominik.stadler
-	 * @throws IOException
-	 */
 	public static void main(String[] args) throws IOException {
 		final File start;
 		if(args.length == 0) {
@@ -37,9 +23,6 @@ public class BenfordsLawFileSystem {
 			start = new File(args[0]);
 		}
 
-
-		BenfordDirectoryWalker walkter = new BenfordDirectoryWalker();
-		walkter.start(start);
+		new BenfordDirectoryWalker().start(start);
 	}
-
 }

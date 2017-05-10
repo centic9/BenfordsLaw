@@ -1,10 +1,3 @@
-/***************************************************
- * dynaTrace Diagnostics (c) dynaTrace software GmbH
- *
- * @file: BenfordDirectoryWalker.java
- * @date: 06.08.2011
- * @author: dominik.stadler
- */
 package org.dstadler.benford;
 
 import java.io.File;
@@ -16,40 +9,39 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.commons.io.DirectoryWalker;
 
-
 /**
- *
- * @author dominik.stadler
+ * Implementation of Benford's Law which collects the first
+ * digit of the file-size of files in the given root-directory.
  */
 public class BenfordDirectoryWalker extends DirectoryWalker<AtomicLong> {
 	int count = 0;
 
-    public List<AtomicLong> start(File startDirectory) throws IOException {
-      List<AtomicLong> results = new ArrayList<>();
-      for(int i = 0;i < 10;i++) {
-    	  results.add(new AtomicLong(0l));
-      }
+	public List<AtomicLong> start(File startDirectory) throws IOException {
+		List<AtomicLong> results = new ArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			results.add(new AtomicLong(0L));
+		}
 
-      walk(startDirectory, results);
+		walk(startDirectory, results);
 
-      return results;
-    }
+		return results;
+	}
 
-    @Override
+	@Override
 	protected void handleFile(File file, int depth, Collection<AtomicLong> results) {
-    	long length = file.length();
-    	int index = Integer.parseInt(Long.toString(length).substring(0, 1));
+		long length = file.length();
+		int index = Integer.parseInt(Long.toString(length).substring(0, 1));
 
-    	((List<AtomicLong>)results).get(index).incrementAndGet();
+		((List<AtomicLong>) results).get(index).incrementAndGet();
 
-    	count++;
+		count++;
 
-    	if(count%1000 == 0) {
-    		long sum = 0;
-    		for(AtomicLong i : results) {
-    			sum += i.get();
-    		}
-    		System.out.println("Distribution (" + count + "/" + sum + "): " + results + " - " + file);
-    	}
-    }
-  }
+		if (count % 1000 == 0) {
+			long sum = 0;
+			for (AtomicLong i : results) {
+				sum += i.get();
+			}
+			System.out.println("Distribution (" + count + "/" + sum + "): " + results + " - " + file);
+		}
+	}
+}
