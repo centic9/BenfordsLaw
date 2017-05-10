@@ -4,7 +4,7 @@ apply plugin: 'application'
 
 mainClassName = "org.dstadler.benford.BenfordsLawFileSystem"
 
-sourceCompatibility = 1.7
+sourceCompatibility = 1.8
 version = '1.0'
 
 jar {
@@ -19,9 +19,9 @@ repositories {
 
 dependencies {
 	compile 'commons-io:commons-io:2.4'
-	compile 'org.apache.commons:commons-lang3:3.3.2'
+	compile 'org.apache.commons:commons-lang3:3.5'
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.14'
+    gradleVersion = '3.4.1'
 }
