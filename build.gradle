@@ -18,10 +18,10 @@ repositories {
 }
 
 dependencies {
-	compile 'commons-io:commons-io:2.4'
-	compile 'org.apache.commons:commons-lang3:3.5'
+	compile 'commons-io:commons-io:2.6'
+	compile 'org.apache.commons:commons-lang3:3.8.1'
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '3.4.1'
+wrapper {
+    gradleVersion = '4.10.3'
 }
