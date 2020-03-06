@@ -10,7 +10,7 @@ install:
 - gradle wrapper
 - ./gradlew compileJava
 
-script: ./gradlew check jacocoTestReport javadoc
+script: ./gradlew check
 
 after_failure:
 - cat build/test-results/test/*.xml
