@@ -1,10 +1,16 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = "org.dstadler.benford.BenfordsLawFileSystem"
+java {
+    toolchain {
+        sourceCompatibility = JavaVersion.VERSION_17
+    }
+}
 
-sourceCompatibility = JavaVersion.VERSION_11
-version = '1.0'
+application {
+    mainClass = 'org.dstadler.benford.BenfordsLawFileSystem'
+    version = '1.0'
+}
 
 jar {
     manifest {
@@ -17,10 +23,10 @@ repositories {
 }
 
 dependencies {
-	implementation 'commons-io:commons-io:2.9.0'
-	implementation 'org.apache.commons:commons-lang3:3.12.0'
+	implementation 'commons-io:commons-io:2.19.0'
+	implementation 'org.apache.commons:commons-lang3:3.17.0'
 }
 
 wrapper {
-    gradleVersion = '7.6'
+    gradleVersion = '8.14.2'
 }
